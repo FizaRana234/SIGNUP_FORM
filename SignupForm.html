@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign up | WORK</title>   
+    <style>
+        body { margin:0; padding:0; font-family: sans-serif; background-color: #f2f2f2;}
+        img { display:block; margin:0; padding:0; }
+        .Welcome h1 { position: absolute; top: 160px; left: 90px; font-size: 60px; color: white; animation: slidein 1.5s ease-out;}
+        @keyframes slidein { from { left: -90px; opacity: 0;} to { left: 90px; opacity: 1; } }
+        .WORKFORM { position: absolute; top: 180px; right: 80px; font-size: 15px; color: white; background: #463a31; padding: 40px; border-radius: 10px;}
+        .WORKFORM input, .WORKFORM select { width: 310px; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: none; }
+        .Create { position: absolute; top: 30px; right: 245px; font-size: 23px; color: #8a3324; }
+        .Create h2 { font-size: 18px; font-weight: normal; }
+    </style>
+</head>
+<body>
+    <img src="work.jpg" alt="Work">
+
+    <div class="Welcome">
+        <h1>WELCOME TO <br> WORK</h1>
+    </div>
+
+    <div class="WORKFORM">
+        <form id="signupForm">
+            <label>First Name*</label><br>
+            <input type="text" id="fname"><br>
+
+            <label>Last Name</label><br>
+            <input type="text" id="lname"><br>
+
+            <label>Date of Birth*</label><br>
+            <input type="date" id="DOB"><br>
+
+            <label>Gender*</label><br>
+            <select id="gender">
+                <option value="">Select Gender</option>
+                <option value="ma">Male</option>
+                <option value="fe">Female</option>
+                <option value="oth">Other</option>
+            </select><br>
+
+            <label>Email*</label><br>
+            <input type="email" id="email"><br>
+
+            <label>Password*</label><br>
+            <input type="password" id="password"><br>
+
+            <input type="button" value="Sign Up" onclick="validateForm()">
+        </form>
+    </div>
+
+    <div class="Create">
+        <h1>Create Account</h1>
+        <h2>Already have an account? <a href="g.html">Sign In</a></h2>
+    </div>
+
+    <script>
+        function validateForm() {
+            let fname = document.getElementById("fname").value.trim();
+            let dob = document.getElementById("DOB").value;
+            let gender = document.getElementById("gender").value;
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value;
+
+            if(fname === "" || dob === "" || gender === "" || email === "" || password === ""){
+                alert("Please fill all required fields.");
+                return;
+            }
+
+            let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if(!email.match(emailPattern)){
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            if(password.length < 6){
+                alert("Password must be at least 6 characters long.");
+                return;
+            }
+
+            alert("Signup successful!");
+        }
+    </script>
+</body>
+</html>
+
